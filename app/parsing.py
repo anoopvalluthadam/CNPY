@@ -7,26 +7,9 @@ import os
 import argparse
 from pandas import ExcelWriter
 
-config = collections.OrderedDict()
-
-xml_data = 'jbs.xml'
-
 start_point = 'Account Statement'
 stop_point = 'Report Details'
 
-config = {
-    'Booking Date': list(range(170,176)),
-    'Txn Date': list(range(288,297)),
-    'Booking Text': list(range(387,390)),
-    'Value Date': list(range(801,810)),
-    'Debit': list(range(927,967)),
-    'Credit': list(range(1021,1084)),
-    'Balance': list(range(1140,1209))
-}
-
-config_keys = ['Booking Date', 'Txn Date', 'Booking Text', 'Value Date', 'Debit', 'Credit', 'Balance']
-
-data = {key: [] for key in config}
 ROOT_DIR= os.path.abspath(os.path.join(os.getcwd()))
 
 def parse_argument():
@@ -59,7 +42,7 @@ def parse_data(xml_path, config, config_keys):
 
     processing = False
     current_heading = None
-
+    data = {key: [] for key in config_keys}
     keys = config_keys
     key_index = temp_next = 0
 
@@ -159,7 +142,7 @@ def load_config(path):
             end = int(data['config'][key].split(',')[1])
             config[key] = list(range(start, end))
 
-        return config, config_keys
+        return config, data['order']
     else:
         print('Error in config path')
         exit(1)
