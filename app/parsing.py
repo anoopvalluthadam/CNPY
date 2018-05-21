@@ -7,8 +7,11 @@ import os
 import argparse
 from pandas import ExcelWriter
 
+# Bos
 start_point = 'Account Statement'
 stop_point = 'Report Details'
+
+# JBS
 start_point = 'Securities Movements'
 stop_point = 'Current Account Movements'
 
@@ -125,13 +128,24 @@ def format_data(data, out_path):
     Returns:
         None
     """
-    df = pd.DataFrame.from_dict(data, orient='index')
+    #df = pd.DataFrame.from_dict(data, orient='index')
+    #df = pd.DataFrame.from_dict(data)
 
+    highest = 0
+    # verify the dataframe length
+    for val in data.values():
+        if len(val) > highest:
+            highest = len(val)
+    for d in data:
+        if highest-len(data[d]) > 0:
+            data[d].extend([0] * int(highest-len(data[d])))
+
+    df = pd.DataFrame.from_dict(data)
     # write to a csv
-    df.to_csv(out_path, sep=',')
+    df.to_csv(out_path + '.csv', sep=',')
 
     # write to an Excel File
-    writer = ExcelWriter('out.xlsx')
+    writer = ExcelWriter(out_path + '.xlsx')
     df.to_excel(writer,'Sheet5')
     writer.save()
 
