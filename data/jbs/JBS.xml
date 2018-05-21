@@ -3,12 +3,12 @@
 
 <pdf2xml producer="poppler" version="0.41.0">
 <page number="1" position="absolute" top="0" left="0" height="892" width="1262">
-	<fontspec id="0" size="25" family="Times" color="#231f20"/>
-	<fontspec id="1" size="13" family="Times" color="#231f20"/>
-	<fontspec id="2" size="14" family="Times" color="#231f20"/>
-	<fontspec id="3" size="11" family="Times" color="#231f20"/>
-	<fontspec id="4" size="10" family="Times" color="#231f20"/>
-	<fontspec id="5" size="133" family="Times" color="#808080"/>
+    <fontspec id="0" size="25" family="Times" color="#231f20"/>
+    <fontspec id="1" size="13" family="Times" color="#231f20"/>
+    <fontspec id="2" size="14" family="Times" color="#231f20"/>
+    <fontspec id="3" size="11" family="Times" color="#231f20"/>
+    <fontspec id="4" size="10" family="Times" color="#231f20"/>
+    <fontspec id="5" size="133" family="Times" color="#808080"/>
 <text top="72" left="166" width="210" height="35" font="0">Account Statement</text>
 <text top="102" left="166" width="279" height="35" font="0">31.03.2018 - 30.04.2018</text>
 <text top="840" left="159" width="75" height="20" font="1"> Page 1 of 1</text>
@@ -273,8 +273,8 @@
 <text top="555" left="246" width="409" height="122" font="5"><b>EBanking</b></text>
 </page>
 <page number="7" position="absolute" top="0" left="0" height="892" width="1262">
-	<fontspec id="6" size="13" family="Times" color="#4663b7"/>
-	<fontspec id="7" size="17" family="Times" color="#231f20"/>
+    <fontspec id="6" size="13" family="Times" color="#4663b7"/>
+    <fontspec id="7" size="17" family="Times" color="#231f20"/>
 <text top="753" left="166" width="50" height="18" font="3">Remarks</text>
 <text top="780" left="166" width="558" height="16" font="4">We would be grateful if you could verify this statement and inform us in writing of any discrepancies within 14 days.</text>
 <text top="797" left="166" width="1080" height="16" font="4">(1) Balance: The Initial Balance and Final Balance are calculated based on actual as well as future-valued cash movements in the Account as at the date such Balance is calculated. Future-valued cash movements reflect</text>
@@ -809,6 +809,8 @@
 <text top="261" left="801" width="70" height="20" font="1">01.04.2018</text>
 <text top="261" left="1047" width="70" height="20" font="1">775,610.00</text>
 <text top="261" left="1167" width="70" height="20" font="1">775,610.00</text>
+
+
 <text top="282" left="175" width="70" height="20" font="1">09.04.2018</text>
 <text top="282" left="288" width="70" height="20" font="1">05.04.2018</text>
 <text top="282" left="387" width="251" height="20" font="1">DIVIDEND PAYMENT INVESTMENT FUNDS</text>
@@ -817,6 +819,8 @@
 <text top="282" left="801" width="70" height="20" font="1">05.04.2018</text>
 <text top="282" left="1063" width="54" height="20" font="1">4,267.30</text>
 <text top="282" left="1167" width="70" height="20" font="1">779,877.30</text>
+
+
 <text top="338" left="175" width="70" height="20" font="1">06.04.2018</text>
 <text top="338" left="288" width="70" height="20" font="1">06.04.2018</text>
 <text top="338" left="387" width="172" height="20" font="1">INTEREST-FIXED TERM LOAN</text>
@@ -826,6 +830,8 @@
 <text top="338" left="801" width="70" height="20" font="1">06.04.2018</text>
 <text top="338" left="934" width="62" height="20" font="1">19,755.56</text>
 <text top="338" left="1167" width="70" height="20" font="1">760,121.74</text>
+
+
 <text top="411" left="175" width="70" height="20" font="1">09.04.2018</text>
 <text top="411" left="288" width="70" height="20" font="1">06.04.2018</text>
 <text top="411" left="387" width="251" height="20" font="1">DIVIDEND PAYMENT INVESTMENT FUNDS</text>
@@ -2092,7 +2098,7 @@
 <text top="555" left="246" width="409" height="122" font="5"><b>EBanking</b></text>
 </page>
 <page number="30" position="absolute" top="0" left="0" height="892" width="1262">
-	<fontspec id="8" size="13" family="Times" color="#ff0000"/>
+    <fontspec id="8" size="13" family="Times" color="#ff0000"/>
 <text top="753" left="166" width="50" height="18" font="3">Remarks</text>
 <text top="780" left="166" width="558" height="16" font="4">We would be grateful if you could verify this statement and inform us in writing of any discrepancies within 14 days.</text>
 <text top="797" left="166" width="1080" height="16" font="4">(1) Balance: The Initial Balance and Final Balance are calculated based on actual as well as future-valued cash movements in the Account as at the date such Balance is calculated. Future-valued cash movements reflect</text>

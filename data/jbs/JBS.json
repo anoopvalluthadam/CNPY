@@ -1,12 +1,12 @@
 {
     "config": {
-        "Booking Date": "170,177",
+        "Booking Date": "170,176",
         "Txn Date": "288,298",
-        "Booking Text": "387,390",
-        "Value Date": "801,810",
-        "Debit": "927,967",
-        "Credit": "1021,1084",
-        "Balance": "1140,1210"
-    },
+        "Booking Text": "387,388",
+        "Value Date": "801,805",
+        "Debit": "927,966",
+        "Credit": "1021,1082",
+        "Balance": "1090,1210"
+   },
     "order": ["Booking Date", "Txn Date", "Booking Text", "Value Date", "Debit", "Credit", "Balance"]
 }
