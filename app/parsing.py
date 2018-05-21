@@ -9,6 +9,8 @@ from pandas import ExcelWriter
 
 start_point = 'Account Statement'
 stop_point = 'Report Details'
+start_point = 'Securities Movements'
+stop_point = 'Current Account Movements'
 
 ROOT_DIR= os.path.abspath(os.path.join(os.getcwd()))
 
@@ -23,9 +25,12 @@ def parse_argument():
                         required=True)
     parser.add_argument('--xml', action="store", dest="xml_path",
                         required=True)
+    parser.add_argument('--output', action="store", dest="output",
+                        required=True)
 
     return {'config_path': parser.parse_args().config,
-            'xml_path': parser.parse_args().xml_path}
+            'xml_path': parser.parse_args().xml_path,
+            'out_path': parser.parse_args().output}
 
 
 def parse_data(xml_path, config, config_keys):
@@ -51,8 +56,15 @@ def parse_data(xml_path, config, config_keys):
 
     text = ''
     current_heading = keys[key_index]
+
     for p in tree.iter():
-        temp_keys.append(p.text)
+        if p.text not in ['  ', None, '']:
+            temp_keys.append(p.text)
+        # reset the temp_key for second table iteratin
+        if p.text == config_keys[0]:
+            temp_keys= []
+            processing = False
+            temp_keys.append(p.text)
 
         if len(temp_keys) == len(config_keys):
             if temp_keys == keys:
@@ -61,12 +73,15 @@ def parse_data(xml_path, config, config_keys):
                     processing = True
                     key_index = temp_next = 0
                     current_heading = keys[key_index]
+                    temp_keys = []
                     continue
             else:
                 # reseting...
                 temp_keys = []
         if processing:
+            temp_keys = []
             if p.attrib:
+
                 if p.text == stop_point:
                     print('-' * 100)
                     #exit(1)
@@ -102,7 +117,7 @@ def parse_data(xml_path, config, config_keys):
     return data
 
 
-def format_data(data):
+def format_data(data, out_path):
     """
     Format the data into Excel
     Args:
@@ -110,10 +125,10 @@ def format_data(data):
     Returns:
         None
     """
-    df = pd.DataFrame.from_dict(data,orient='index')
+    df = pd.DataFrame.from_dict(data, orient='index')
 
     # write to a csv
-    df.to_csv('out.csv', sep=',')
+    df.to_csv(out_path, sep=',')
 
     # write to an Excel File
     writer = ExcelWriter('out.xlsx')
@@ -152,8 +167,8 @@ if __name__ == '__main__':
     # NOTE: Can read from the Directory asynchronously  and process in parellel
     args = parse_argument()
     xml_path = ROOT_DIR + '/' + args['xml_path']
+    out_path = ROOT_DIR + '/' + args['out_path']
     config, config_keys = load_config(args.get('config_path', ''))
-    print(config)
 
     data = parse_data(xml_path, config, config_keys)
-    format_data(data)
+    format_data(data, out_path)

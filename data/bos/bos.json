@@ -1,0 +1,12 @@
+{
+    "config": {
+        "Description": "69,70",
+        "Ccy": "292,298",
+        "Trade Date": "597,598",
+        "Quantity/Nominal": "1002,027",
+        "Reference Number": "1108,1109",
+        "Narrative": "69,70",
+        "Value Date": "597,598"
+    },
+    "order": ["Description", "Ccy", "Trade Date", "Quantity/Nominal", "Reference Number", "Narrative", "Value Date"]
+}
