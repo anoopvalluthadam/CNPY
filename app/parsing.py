@@ -9,11 +9,12 @@ from pandas import ExcelWriter
 
 # JBS
 start_point = 'Account Statement'
+#stop_point = 'Carried forward'
 stop_point = 'Report Details'
 
 # Bos
-start_point = 'Securities Movements'
-stop_point = 'Current Account Movements'
+#start_point = 'Securities Movements'
+#stop_point = 'Current Account Movements'
 
 ROOT_DIR= os.path.abspath(os.path.join(os.getcwd()))
 
@@ -84,7 +85,6 @@ def parse_data(xml_path, config, config_keys):
         if processing:
             temp_keys = []
             if p.attrib:
-
                 if p.text == stop_point:
                     print('-' * 100)
                     #exit(1)
@@ -99,7 +99,8 @@ def parse_data(xml_path, config, config_keys):
                         text += p.text + ' '
 
                 elif int(p.attrib.get('left', 0)) in config[keys[temp_next]]:
-                    data[current_heading].append(text)
+                    if text:
+                        data[current_heading].append(text)
                     text = ''
                     if p.text:
                         text += p.text + ' '
@@ -111,7 +112,8 @@ def parse_data(xml_path, config, config_keys):
                         key_index = 0
                     current_heading = keys[key_index]
                 else:
-                    data[current_heading].append(text)
+                    if text:
+                        data[current_heading].append(text)
                     text = ''
                     # need to verify where is our key index belongs to
                     temp_index = 0
@@ -120,7 +122,8 @@ def parse_data(xml_path, config, config_keys):
                             # reached end and in between gaps are there
                             if len(keys) == i+1:
                                 current_heading = keys[i]
-                                data[current_heading].append(p.text)
+                                if p.text:
+                                    data[current_heading].append(p.text)
                                 print(current_heading)
                                 print('Resetting')
                                 key_index = 0
@@ -128,9 +131,11 @@ def parse_data(xml_path, config, config_keys):
                                 current_heading = keys[key_index]
                             # between gaps are there, not reached end
                             else:
-                                data[current_heading].append(text)
+                                if text:
+                                    data[current_heading].append(text)
                                 key_index = i
-                                data[keys[key_index]].append(p.text)
+                                if p.text:
+                                    data[keys[key_index]].append(p.text)
                                 text = ''
                     continue
 
